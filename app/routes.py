@@ -2,11 +2,10 @@ from flask import render_template, flash, redirect
 from app import app
 from app.forms import LoginForm
 
-@app.route('/')
-@app.route('/index')
-@app.route('/mayank')
+@app.route('/', endpoint='index')
+@app.route('/index', endpoint='index')
 def index():
-    user = {'username': 'Miguel'}
+    user = {'username': 'Mayank'}
     posts = [
         {
             'author': {'username': 'John'},
@@ -18,9 +17,8 @@ def index():
         }
     ]
     return render_template('index.html', title='Home', user=user, posts=posts)
-    
 
-@app.route('/login', methods=['GET', 'POST'])
+@app.route('/login', methods=['GET', 'POST'], endpoint='login')
 def login():
     form = LoginForm()
     if form.validate_on_submit():
