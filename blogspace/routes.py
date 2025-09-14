@@ -1,6 +1,6 @@
 from flask import render_template, flash, redirect, url_for
-from app import app
-from app.forms import LoginForm
+from blogspace import app
+from blogspace.forms import LoginForm
 
 @app.route('/', endpoint='index')
 @app.route('/index', endpoint='index')

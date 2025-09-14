@@ -10,7 +10,7 @@ app.config.from_object(Config) #this loads all env specific config into flask co
 db = SQLAlchemy(app)
 migrate = Migrate(app,db)
 
-from app import routes, models
+from blogspace import routes, models
 #app is a package folder
 #init is a script which runs everything when package is loaded
 #routes, config, forms are modules
