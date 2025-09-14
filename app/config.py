@@ -1,6 +1,8 @@
 import os
+basedir = os.path.abspath(os.path.dirname(__file__)) #abs path of dir where this config is located
 
 class Config:
+    SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL') or 'sqlite:///' + os.path.join(basedir, 'app.db') #checks from env var in production, if not then set's up mannual sqlite db in project folder    
     SECRET_KEY = os.environ.get('SECRET_KEY') or 'you-will-never-guess' #gets secret key from env var of server running app, managed by devops
     
 #do not hardcode secret keys into codebase for security reasons due to risk of accidental exposure

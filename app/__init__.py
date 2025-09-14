@@ -1,12 +1,16 @@
 from flask import Flask
 from .config import Config
+from flask_sqlalchemy import SQLAlchemy
+from flask_migrate import Migrate
 
 app = Flask(__name__)
 app.config.from_object(Config) #this loads all env specific config into flask config system
 #Flask only loads uppercase attributes from configuration objects or modules because, by convention, uppercase names are used for configuration variables and constants in Python and Flask
 #(like SECRET_KEY, DEBUG, SQLALCHEMY_DATABASE_URI) clearly signal that these are intended as configuration settings or constants, not regular variables or helper functions
+db = SQLAlchemy(app)
+migrate = Migrate(app,db)
 
-from app import routes
+from app import routes, models
 #app is a package folder
 #init is a script which runs everything when package is loaded
 #routes, config, forms are modules
