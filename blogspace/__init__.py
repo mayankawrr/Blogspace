@@ -11,7 +11,7 @@ db = SQLAlchemy(app)
 migrate = Migrate(app,db)
 
 from blogspace import routes, models
-#app is a package folder
+#app is a package folder˝
 #init is a script which runs everything when package is loaded
 #routes, config, forms are modules
 #above we import routes module into init 
